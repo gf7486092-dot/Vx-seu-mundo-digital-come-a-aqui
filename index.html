@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VX - Seu mundo digital</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080D12;
+    color: #F1F5F9;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #0D1720;
+    padding: 24px;
+    border-bottom: 3px solid #00DF91;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #00E99A;
+}
+
+.logo span {
+    color: #247CFF;
+}
+
+header p {
+    color: #B6C7D8;
+    margin-bottom: 0;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background: #101C29;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+button {
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+nav button {
+    background: #17283A;
+    color: white;
+    border: 1px solid #247CFF;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+
+nav button:hover {
+    background: #087E68;
+    border-color: #00E99A;
+}
+
+main {
+    width: 100%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 24px 18px;
+}
+
+.hero {
+    padding: 32px;
+    border: 1px solid #167F85;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #063E39, #102B50);
+}
+
+.hero h1 {
+    font-size: 32px;
+}
+
+.hero p {
+    line-height: 1.7;
+    color: #D3E3F0;
+}
+
+.action {
+    display: inline-block;
+    background: #00C98A;
+    color: #071A17;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-weight: bold;
+}
+
+section {
+    margin-bottom: 38px;
+    scroll-margin-top: 75px;
+}
+
+h2 {
+    border-left: 4px solid #00E99A;
+    padding-left: 12px;
+    margin-top: 32px;
+}
+
+.search {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.search input {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px;
+    background: #111D29;
+    color: white;
+    border: 1px solid #31516D;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+.search button {
+    background: #00C98A;
+    color: #071A17;
+    border: 0;
+    border-radius: 9px;
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+#resultado {
+    color: #00E99A;
+    min-height: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    min-width: 0;
+    padding: 20px 15px;
+    text-align: center;
+    background: #111D29;
+    border: 1px solid #20384E;
+    border-radius: 14px;
+}
+
+.card:hover {
+    border-color: #00E99A;
+}
+
+.card h3 {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+.card p {
+    min-height: 32px;
+    color: #AAB9C9;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.card button {
+    width: 100%;
+    padding: 11px 8px;
+    color: white;
+    background: #126D65;
+    border: 0;
+    border-radius: 8px;
+}
+
+.card button:hover {
+    background: #078F70;
+}
+
+.card[hidden] {
+    display: none !important;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    background: #0D1720;
+    border-top: 1px solid #20384E;
+    color: #AAB9C9;
+}
+
+@media (max-width: 500px) {
+    .hero {
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    nav button {
+        flex: 1 1 40%;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">V<span>X</span></div>
+    <p>Seu mundo digital começa aqui.</p>
+</header>
+
+<nav>
+    <button onclick="irPara('inicio')">Inicio</button>
+    <button onclick="irPara('aplicativos')">Aplicativos</button>
+    <button onclick="irPara('jogos')">Jogos</button>
+    <button onclick="irPara('inteligencias')">Inteligencias artificiais</button>
+    <button onclick="irPara('pesquisa')">Pesquisa</button>
+</nav>
+
+<main>
+
+<section id="inicio">
+    <div class="hero">
+        <h1>Bem-vindo a VX</h1>
+        <p>
+            Seu espaco para descobrir aplicativos, jogos e
+            ferramentas de inteligencia artificial.
+            Tudo organizado em um so lugar.
+        </p>
+        <button class="action" onclick="irPara('aplicativos')">
+            Explorar VX
+        </button>
+    </div>
+</section>
+
+<section id="pesquisa">
+    <h2>Pesquisa VX</h2>
+    <div class="search">
+        <input id="busca" type="text"
+            placeholder="Pesquise aplicativos, jogos ou IAs..."
+            onkeydown="if(event.key === 'Enter') pesquisar()">
+        <button onclick="pesquisar()">Pesquisar</button>
+        <button onclick="limparPesquisa()">Limpar</button>
+    </div>
+    <p id="resultado"></p>
+</section>
+
+<section id="aplicativos">
+    <h2>Aplicativos populares</h2>
+    <div class="grid">
+
+        <div class="card" data-nome="youtube videos entretenimento">
+            <h3>YouTube</h3>
+            <p>Videos e entretenimento</p>
+            <button onclick="abrir('https://www.youtube.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="netflix filmes series">
+            <h3>Netflix</h3>
+            <p>Filmes e series</p>
+            <button onclick="abrir('https://www.netflix.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="spotify musica podcasts">
+            <h3>Spotify</h3>
+            <p>Musica e podcasts</p>
+            <button onclick="abrir('https://open.spotify.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="whatsapp mensagens chamadas">
+            <h3>WhatsApp</h3>
+            <p>Mensagens e chamadas</p>
+            <button onclick="abrir('https://web.whatsapp.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="twitch transmissao lives">
+            <h3>Twitch</h3>
+            <p>Transmissoes ao vivo</p>
+            <button onclick="abrir('https://www.twitch.tv/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="disney filmes series">
+            <h3>Disney+</h3>
+            <p>Filmes e series</p>
+            <button onclick="abrir('https://www.disneyplus.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="discord comunidade mensagens">
+            <h3>Discord</h3>
+            <p>Comunidades e conversas</p>
+            <button onclick="abrir('https://discord.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="tiktok videos curtos">
+            <h3>TikTok</h3>
+            <p>Videos curtos</p>
+            <button onclick="abrir('https://www.tiktok.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="instagram fotos videos">
+            <h3>Instagram</h3>
+            <p>Fotos e videos</p>
+            <button onclick="abrir('https://www.instagram.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="facebook rede social">
+            <h3>Facebook</h3>
+            <p>Rede social</p>
+            <button onclick="abrir('https://www.facebook.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="telegram mensagens grupos">
+            <h3>Telegram</h3>
+            <p>Mensagens e grupos</p>
+            <button onclick="abrir('https://web.telegram.org/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="pinterest imagens ideias">
+            <h3>Pinterest</h3>
+            <p>Imagens e inspiracao</p>
+            <button onclick="abrir('https://www.pinterest.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="reddit comunidades discussao">
+            <h3>Reddit</h3>
+            <p>Comunidades e discussoes</p>
+            <button onclick="abrir('https://www.reddit.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="capcut editor videos">
+            <h3>CapCut</h3>
+            <p>Edicao de videos</p>
+            <button onclick="abrir('https://www.capcut.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="canva design imagens">
+            <h3>Canva</h3>
+            <p>Design e criacao</p>
+            <button onclick="abrir('https://www.canva.com/')">Abrir site</button>
+        </div>
+
+        <div class="card" data-nome="gmail email correio">
+            <h3>Gmail</h3>
+            <p>Email e mensagens</p>
+            <button onclick="abrir('https://mail.google.com/')">Abrir site</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="jogos">
+    <h2>Jogos populares</h2>
+    <div class="grid">
+
+        <div class="card" data-nome="roblox aventura criacao">
+            <h3>Roblox</h3>
+            <p>Jogos e experiencias criadas pela comunidade</p>
+            <button onclick="abrir('https://www.roblox.com/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="free fire batalha acao">
+            <h3>Free Fire</h3>
+            <p>Batalhas de sobrevivencia</p>
+            <button onclick="abrir('https://ff.garena.com/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="fortnite batalha construcao">
+            <h3>Fortnite</h3>
+            <p>Acao e construcao</p>
+            <button onclick="abrir('https://www.fortnite.com/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="minecraft construcao aventura">
+            <h3>Minecraft</h3>
+            <p>Construcao e exploracao</p>
+            <button onclick="abrir('https://www.minecraft.net/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="brawl stars combate">
+            <h3>Brawl Stars</h3>
+            <p>Batalhas rapidas</p>
+            <button onclick="abrir('https://supercell.com/en/games/brawlstars/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="clash royale estrategia">
+            <h3>Clash Royale</h3>
+            <p>Estrategia e batalhas</p>
+            <button onclick="abrir('https://supercell.com/en/games/clashroyale/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="stumble guys corrida obstaculos">
+            <h3>Stumble Guys</h3>
+            <p>Corridas e obstaculos</p>
+            <button onclick="abrir('https://www.stumbleguys.com/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="rocket league carros futebol">
+            <h3>Rocket League</h3>
+            <p>Futebol com carros</p>
+            <button onclick="abrir('https://www.rocketleague.com/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="efootball futebol">
+            <h3>eFootball</h3>
+            <p>Futebol virtual</p>
+            <button onclick="abrir('https://www.konami.com/efootball/')">Conhecer</button>
+        </div>
+
+        <div class="card" data-nome="valorant tiro estrategia">
+            <h3>VALORANT</h3>
+            <p>Acao tatica em equipe</p>
+            <button onclick="abrir('https://playvalorant.com/')">Conhecer</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="inteligencias">
+    <h2>Inteligencias artificiais</h2>
+    <div class="grid">
+
+        <div class="card" data-nome="chatgpt openai inteligencia artificial">
+            <h3>ChatGPT</h3>
+            <p>Assistente de inteligencia artificial</p>
+            <button onclick="abrir('https://chatgpt.com/')">Acessar</button>
+        </div>
+
+        <div class="card" data-nome="gemini google inteligencia artificial">
+            <h3>Gemini</h3>
+            <p>Assistente de IA do Google</p>
+            <button onclick="abrir('https://gemini.google.com/')">Acessar</button>
+        </div>
+
+        <div class="card" data-nome="copilot microsoft inteligencia artificial">
+            <h3>Copilot</h3>
+            <p>Assistente de IA da Microsoft</p>
+            <button onclick="abrir('https://copilot.microsoft.com/')">Acessar</button>
+        </div>
+
+        <div class="card" data-nome="claude anthropic inteligencia artificial">
+            <h3>Claude</h3>
+            <p>Assistente de IA</p>
+            <button onclick="abrir('https://claude.ai/')">Acessar</button>
+        </div>
+
+        <div class="card" data-nome="perplexity pesquisa inteligencia artificial">
+            <h3>Perplexity</h3>
+            <p>Pesquisa assistida por IA</p>
+            <button onclick="abrir('https://www.perplexity.ai/')">Acessar</button>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    VX - Seu mundo digital.
+    <p>Projeto em desenvolvimento.</p>
+</footer>
+
+<script>
+function irPara(id) {
+    var elemento = document.getElementById(id);
+
+    if (elemento) {
+        elemento.scrollIntoView();
+    }
+}
+
+function abrir(url) {
+    window.open(url, "_blank");
+}
+
+function pesquisar() {
+    var campo = document.getElementById("busca");
+    var termo = campo.value.toLowerCase().replace(/^\s+|\s+$/g, "");
+    var cards = document.querySelectorAll(".card");
+    var encontrados = 0;
+
+    if (termo === "") {
+        limparPesquisa();
+        document.getElementById("resultado").textContent =
+            "Digite algo para pesquisar.";
+        return;
+    }
+
+    for (var i = 0; i < cards.length; i++) {
+        var nome = cards[i].getAttribute("data-nome") || "";
+        var texto = cards[i].textContent || "";
+        var conteudo = (nome + " " + texto).toLowerCase();
+
+        if (conteudo.indexOf(termo) !== -1) {
+            cards[i].removeAttribute("hidden");
+            encontrados++;
+        } else {
+            cards[i].setAttribute("hidden", "hidden");
+        }
+    }
+
+    document.getElementById("resultado").textContent =
+        encontrados + (encontrados === 1 ?
+        " resultado encontrado." : " resultados encontrados.");
+
+    if (encontrados > 0) {
+        irPara("aplicativos");
+    }
+}
+
+function limparPesquisa() {
+    var cards = document.querySelectorAll(".card");
+
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].removeAttribute("hidden");
+    }
+
+    document.getElementById("busca").value = "";
+    document.getElementById("resultado").textContent = "";
+}
+</script>
+
+</body>
+</html>
